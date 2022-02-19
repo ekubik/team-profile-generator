@@ -10,26 +10,43 @@ const Intern = require("./lib/Intern");
 
 const team = [];
 
-const managerDetails = [
+function addManager() { inquirer.prompt([
   { name: "name", type: "input", message: "Please enter the manager's name." },
   { name: "id", type: "input", message: "Enter the manager's id." },
-  { name: "officeId", type: "input", message: "Please enter the office id." },
+  { name: "officeNumber", type: "input", message: "Please enter the office id." },
   {
     name: "email",
     type: "input",
     message: "Please enter the manager's email address.",
   },
-];
+]).then( data => {
+    const manager = new Manager (data.name, data.id, data.email, data.officeNumber);
+    console.log(manager);
+    team.push(manager);
+    buildTeam();
+})
+};
 
-const memberRole = [
+function buildTeam(){ inquirer.prompt ([
     {name: "role",
     type: "list",
     message: "Please select the member that you would like to add to your team.",
     choices: ["Engineer", "Intern", "Finished adding members"]
     }
-]
+]).then(userChoice => {
+    switch (userChoice.role){
+    case "Intern":
+    addIntern();
+    break;
+case "Engineer":
+    addEngineer();
+    break;
+case "Finished adding members":
+    console.log("Your team profile has been generated.");
+    break} 
+})};
 
-const engineerDetails = [
+  function addEngineer() {inquirer.prompt([
   { name: "name", type: "input", message: "Please enter the engineer's name." },
   { name: "id", type: "input", message: "Enter the engineer's id." },
   {
@@ -42,9 +59,14 @@ const engineerDetails = [
     type: "input",
     message: "Please enter the employee's github username.",
   },
-];
+])
+.then(data=> {
+    const engineer = new Engineer (data.name, data.id, data.email, data.githubUser);
+    team.push(engineer);
+    console.log(engineer);
+    buildTeam()})};
 
-const internDetails = [
+function addIntern() { inquirer.prompt([
   { 
     name: "name", 
     type: "input", 
@@ -65,25 +87,16 @@ const internDetails = [
       type: "input",
       message: "Please enter the school attended by this intern."
   }
-];
+])
+.then(data=> {
+    const intern = new Intern (data.name, data.id, data.email, data.school);
+    team.push(intern);
+    console.log(intern);
+    buildTeam()})};
 
-addTeamMember = () => {
-switch(role) {
-case "Intern":
-    return inquirer.prompt(internDetails);
-    break;
-case "Engineer":
-    return inquirer.prompt(engineerDetails);
-    break;
-case "Finished adding members":
-    return "Your team profile has been generated.";
-    break;
-}}
 
-function init () {
-    inquirer.prompt(managerDetails)
-    .then(inquirer.prompt(memberRole))
-    .then(addTeamMember())
-}
+addManager();
 
-init();
+
+
+
