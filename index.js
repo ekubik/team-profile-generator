@@ -1,7 +1,7 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const jest = require("jest");
-const generateHTML = require("./src/generateHTML");
+//const jest = require("jest");
+//const generateHTML = require("./src/generateHTML");
 
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
@@ -20,6 +20,14 @@ const managerDetails = [
     message: "Please enter the manager's email address.",
   },
 ];
+
+const memberRole = [
+    {name: "role",
+    type: "list",
+    message: "Please select the member that you would like to add to your team.",
+    choices: ["Engineer", "Intern", "Finished adding members"]
+    }
+]
 
 const engineerDetails = [
   { name: "name", type: "input", message: "Please enter the engineer's name." },
@@ -59,3 +67,23 @@ const internDetails = [
   }
 ];
 
+addTeamMember = () => {
+switch(role) {
+case "Intern":
+    return inquirer.prompt(internDetails);
+    break;
+case "Engineer":
+    return inquirer.prompt(engineerDetails);
+    break;
+case "Finished adding members":
+    return "Your team profile has been generated.";
+    break;
+}}
+
+function init () {
+    inquirer.prompt(managerDetails)
+    .then(inquirer.prompt(memberRole))
+    .then(addTeamMember())
+}
+
+init();
