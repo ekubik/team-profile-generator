@@ -2,19 +2,20 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const path = require("path");
 //const jest = require("jest");
-const {generateManagerCard, generateHTML, generateInternCard,generateEngineerCard} = require("./src/generateHTML");
+const {createTeam, generateManagerCard, generateInternCard, generateEngineerCard} = require("./src/generateHTML");
 
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
+const generateHTML = require("./src/generateHTML");
 
 const team = [];
 
 function addManager() { inquirer.prompt([
   { name: "name", type: "input", message: "Please enter the manager's name." },
   { name: "id", type: "input", message: "Enter the manager's id." },
-  { name: "officeNumber", type: "input", message: "Please enter the office id." },
+  { name: "officeNumber", type: "input", message: "Please enter the office number." },
   {
     name: "email",
     type: "input",
@@ -24,7 +25,7 @@ function addManager() { inquirer.prompt([
     const manager = new Manager (data.name, data.id, data.email, data.officeNumber);
     console.log(manager);
     team.push(manager);
-    fs.writeFileSync("./dist/index.html", generateManagerCard(data))
+   // fs.writeFileSync("./dist/index.html", generateHTML(data))
     buildTeam();
 })
 };
@@ -66,7 +67,7 @@ case "Finished adding members":
     const engineer = new Engineer (data.name, data.id, data.email, data.githubUser);
     team.push(engineer);
     console.log(engineer);
-    fs.appendFileSync("./dist/index.html", generateEngineerCard(data));
+    //fs.appendFileSync("./dist/index.html", generateEngineerCard(data));
     buildTeam()})};
 
 function addIntern() { inquirer.prompt([
@@ -95,12 +96,8 @@ function addIntern() { inquirer.prompt([
     const intern = new Intern (data.name, data.id, data.email, data.school);
     team.push(intern);
     console.log(intern);
-    fs.appendFileSync("./dist/index.html", generateInternCard(data));
+    //fs.appendFileSync("./dist/index.html", generateInternCard(data));
     buildTeam()})};
 
-
-addManager()
-
-
-
+addManager();
 

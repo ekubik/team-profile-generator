@@ -1,25 +1,5 @@
 
-const generateHTML = (data) => {
-return 
-
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title> Our Team </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous""> </link>
-</head>
-<body>
-<div> ${generateManagerCard(data)} <div>
-
-</body>
-
-</html>`;
-
-}
-
+const createTeam = (team) => {
 
 generateManagerCard = (data) => {
 return ` <div class="card">
@@ -35,7 +15,7 @@ return ` <div class="card">
     </a>
   </div>
 </div>`
-}
+};
 
 generateEngineerCard = (data) => {
 return ` <div class="card">
@@ -51,7 +31,7 @@ return ` <div class="card">
     </a>
   </div>
 </div>`
-}
+};
 
 generateInternCard = (data) => {
   return ` <div class="card">
@@ -66,7 +46,43 @@ generateInternCard = (data) => {
       ${data.email}
     </a>
   </div>
-</div>`;
-};
+</div>`
+}
 
-module.exports = {generateHTML, generateEngineerCard, generateManagerCard, generateInternCard}
+const htmlCards = [];
+
+   htmlCards.push(team
+       .filter(employee => employee.getRole() === "Manager")
+       .map(manager => generateManager(manager))
+   ),
+   htmlCards.push(team
+       .filter(employee => employee.getRole() === "Engineer")
+       .map(engineer => generateEngineer(engineer))
+       .join("")
+   );
+   htmlCards.push(team
+       .filter(employee => employee.getRole() === "Intern")
+       .map(intern => generateIntern(intern))
+       .join("")
+   );
+   return htmlCards.join("")};
+
+
+const generateHTML = (data) => {
+return
+`<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <title> Our Team </title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous""> </link>
+</head>
+<body>
+<div> ${createTeam(data)} <div>
+</body>
+</html>`;
+}
+
+module.exports = generateHTML;
