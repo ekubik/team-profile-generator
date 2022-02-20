@@ -1,5 +1,5 @@
 
-const generateHTML = (teamData) => {
+const generateHTML = (data) => {
 
 return 
 `<!DOCTYPE html>
@@ -20,6 +20,7 @@ return
 
 }
 
+
 generateManagerCard = (data) => {
 return ` <div class="card">
   <h5 class="card-header"> ${data.name}</h5>
@@ -33,9 +34,23 @@ return ` <div class="card">
       ${data.email}
     </a>
   </div>
-</div>;`
-
-
+</div>`
 }
 
-module.exports = generateHTML; generateManagerCard;
+generateEngineerCard = (data) => {
+return ` <div class="card">
+  <h5 class="card-header"> ${data.name}</h5>
+  <div class="card-body">
+    <h5 class="card-title"> Engineer </h5>
+    <p class="card-text">
+      Employee ID: ${data.id}
+    </p>
+    <p> Github: <a href="https://www.github.com/${data.githubUser}"> ${data.githubUser}</a></p>
+    <a href= "mailto:${data.email}" >
+      ${data.email}
+    </a>
+  </div>
+</div>`
+
+
+module.exports = {generateHTML, generateManagerCard}

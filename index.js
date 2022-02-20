@@ -1,7 +1,8 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+const path = require("path");
 //const jest = require("jest");
-const generateManagerCard = require("./src/generateHTML");
+const {generateManagerCard, generateHTML} = require("./src/generateHTML");
 
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
@@ -23,6 +24,7 @@ function addManager() { inquirer.prompt([
     const manager = new Manager (data.name, data.id, data.email, data.officeNumber);
     console.log(manager);
     team.push(manager);
+    generateHTML();
     generateManagerCard();
     buildTeam();
 })
