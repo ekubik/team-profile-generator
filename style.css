@@ -1,0 +1,28 @@
+body {
+  background-color: #68B0AB;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Lobster Two', cursive;
+  color: #FAF3DD;
+  padding: 40px;
+  font-style: bolder;
+}
+
+.card {
+  margin: 30px;
+  border: 2px solid #C8D5B9;
+}
+
+.card-body {
+  background-color: #FAF3DD;
+
+}
+
+.card-header {
+  background-color: #8FC0A9;
+  color: #FAF3DD;
+  font-family: 'Lobster Two', cursive;
+  font-size: 24px;
+}
