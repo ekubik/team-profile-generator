@@ -46,6 +46,7 @@ case "Engineer":
     break;
 case "Finished adding members":
     console.log("Your team profile has been generated.");
+    fs.writeFileSync("./dist/index.html", generateHTML(team))
     break} 
 })};
 

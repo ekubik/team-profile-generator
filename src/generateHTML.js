@@ -53,24 +53,23 @@ const htmlCards = [];
 
    htmlCards.push(team
        .filter(employee => employee.getRole() === "Manager")
-       .map(manager => generateManager(manager))
+       .map(manager => generateManagerCard(manager))
    ),
    htmlCards.push(team
        .filter(employee => employee.getRole() === "Engineer")
-       .map(engineer => generateEngineer(engineer))
+       .map(engineer => generateEngineerCard(engineer))
        .join("")
    );
    htmlCards.push(team
        .filter(employee => employee.getRole() === "Intern")
-       .map(intern => generateIntern(intern))
+       .map(intern => generateInternCard(intern))
        .join("")
    );
    return htmlCards.join("")};
 
 
 const generateHTML = (data) => {
-return
-`<!DOCTYPE html>
+return `<!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8" />
