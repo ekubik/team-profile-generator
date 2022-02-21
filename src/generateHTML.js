@@ -23,6 +23,7 @@ return ` <div class="card">
   <h5 class="card-header"> ${data.name}</h5>
   <div class="card-body">
     <h5 class="card-title"> Engineer </h5>
+    <br>
     <p class="card-text">
       <b>Employee ID:</b> ${data.id}
     </p>
