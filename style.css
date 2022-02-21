@@ -2,6 +2,13 @@ body {
   background-color: #68B0AB;
 }
 
+header{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: row;
+}
+
 h1 {
   text-align: center;
   font-family: 'Lobster Two', cursive;
@@ -13,10 +20,15 @@ h1 {
 .card {
   margin: 30px;
   border: 2px solid #C8D5B9;
+  max-width: 100%;
+  min-width: 300px;
+
 }
 
 .card-body {
   background-color: #FAF3DD;
+  color: #2D4143;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
 
 }
 
@@ -25,4 +37,25 @@ h1 {
   color: #FAF3DD;
   font-family: 'Lobster Two', cursive;
   font-size: 24px;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+p {
+  line-height:5px;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+color: #68B0AB;
 }

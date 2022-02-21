@@ -6,6 +6,7 @@ return ` <div class="card">
   <h5 class="card-header"> ${data.name}</h5>
   <div class="card-body">
     <h5 class="card-title"> Manager </h5>
+    <br>
     <p class="card-text">
       <b>Employee ID: </b> ${data.id}
     </p>
@@ -25,7 +26,7 @@ return ` <div class="card">
     <p class="card-text">
       <b>Employee ID:</b> ${data.id}
     </p>
-    <p> <b> Github: </b> <a href="https://www.github.com/${data.githubUser}"> ${data.githubUser}</a></p>
+    <p> <b> Github: </b> <a href="https://www.github.com/${data.githubUser}" target="_blank"> ${data.githubUser}</a></p>
     <p> <b>Email: </b> <a href= "mailto:${data.email}" >
       ${data.email}
     </a> </p>
@@ -38,6 +39,7 @@ generateInternCard = (data) => {
   <h5 class="card-header"> ${data.name}</h5>
   <div class="card-body">
     <h5 class="card-title"> Intern </h5>
+    <br>
     <p class="card-text">
       <b>Employee ID:</b> ${data.id}
     </p>
@@ -80,14 +82,17 @@ return `<!DOCTYPE html>
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="../style.css"> </link>
 </head>
 <body>
 <header>
 <h1> Our Team </h1> </header>
-<section class="container-fluid">
-<div class="d-flex">
-<div> ${createTeam(data)} </div>
+<section>
+<div id="container">
+ ${createTeam(data)} 
 </div>
 </section>
 <footer></footer>
